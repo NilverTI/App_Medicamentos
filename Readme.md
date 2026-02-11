@@ -1,112 +1,123 @@
 # 📱 MiHorarioMed
 
 Aplicación Android desarrollada en **Kotlin + Jetpack Compose**
-siguiendo arquitectura **MVVM**, conectada a una **API REST** desplegada
-en Render.
+siguiendo arquitectura **MVVM** y consumo de **API REST**.
 
-Proyecto académico para el curso de Desarrollo de Apps.
+Permite gestionar horarios de medicamentos con las siguientes
+funcionalidades:
+
+-   ✅ Crear horarios
+-   📋 Listar horarios
+-   ✏️ Editar horarios
+-   🗑 Eliminar horarios
+-   🔎 Ver detalle completo
+-   🔄 Filtrar por activos/inactivos
 
 ------------------------------------------------------------------------
 
-## 🚀 Descripción
+## 🚀 API REST
 
-**MiHorarioMed** permite gestionar horarios de medicamentos de forma
-sencilla e intuitiva.
+Backend desplegado en Render:
 
-Funcionalidades principales:
-
--   ✅ Crear horarios de medicamentos\
--   📋 Listar horarios\
--   ✏️ Editar horarios\
--   🗑 Eliminar horarios\
--   🔎 Ver detalle completo\
--   🔄 Filtrar solo horarios activos
-
-La aplicación consume una API REST propia desarrollada en Spring Boot.
+🔗 https://apihorariomed.onrender.com\
+📂 Repositorio API: https://github.com/NilverTI/ApiHorarioMed\
+📂 Repositorio App: https://github.com/NilverTI/App_Medicamentos
 
 ------------------------------------------------------------------------
 
 ## 🏗 Arquitectura
 
-### 📲 App Android
+La aplicación está organizada por capas:
+
+-   **UI (MVVM)**
+-   **Domain (Casos de uso)**
+-   **Data (Repositorio + API)**
+-   **Core (Utilidades y manejo de estados)**
+
+------------------------------------------------------------------------
+
+## 📂 Estructura del Proyecto
+
+    com.tantalean.mihorariomed
+    │
+    ├── ui
+    │   ├── navigation
+    │   │   └── AppNavGraph.kt
+    │   ├── screens
+    │   │   ├── list
+    │   │   │   ├── ScheduleListScreen.kt
+    │   │   │   ├── ScheduleListViewModel.kt
+    │   │   │   └── ScheduleListUiState.kt
+    │   │   ├── form
+    │   │   │   ├── ScheduleFormScreen.kt
+    │   │   │   ├── ScheduleFormViewModel.kt
+    │   │   │   └── ScheduleFormUiState.kt
+    │   │   └── detail
+    │   │       ├── ScheduleDetailScreen.kt
+    │   │       ├── ScheduleDetailViewModel.kt
+    │   │       └── ScheduleDetailUiState.kt
+    │   └── components
+    │       ├── ScheduleItem.kt
+    │       └── LoadingErrorView.kt
+    │
+    ├── data
+    │   ├── remote
+    │   │   ├── ApiClient.kt
+    │   │   └── ScheduleApiService.kt
+    │   ├── dto
+    │   │   ├── ScheduleRequest.kt
+    │   │   └── ScheduleResponse.kt
+    │   └── repository
+    │       └── ScheduleRepositoryImpl.kt
+    │
+    ├── domain
+    │   ├── model
+    │   │   └── Schedule.kt
+    │   ├── repository
+    │   │   └── ScheduleRepository.kt
+    │   └── usecase
+    │       ├── GetSchedulesUseCase.kt
+    │       ├── GetScheduleByIdUseCase.kt
+    │       ├── CreateScheduleUseCase.kt
+    │       ├── UpdateScheduleUseCase.kt
+    │       └── DeleteScheduleUseCase.kt
+    │
+    ├── core
+    │   ├── result
+    │   │   └── Resource.kt
+    │   └── utils
+    │       └── Validators.kt
+    │
+    └── MainActivity.kt
+
+------------------------------------------------------------------------
+
+## ⚙️ Tecnologías utilizadas
 
 -   Kotlin
 -   Jetpack Compose
 -   MVVM
 -   Retrofit
--   StateFlow
+-   Coroutines
+-   Flow
 -   Material 3
 
-Estructura por capas:
-
-    ui (navigation, screens, components)
-    domain (model, repository, usecase)
-    data (remote, dto, repository)
-    core (utils, result)
-
 ------------------------------------------------------------------------
 
-### 🌐 API REST
+## 🎯 Requisitos Académicos Cumplidos
 
--   Spring Boot
--   Controller / Service / Repository
--   CRUD completo
--   Desplegada en Render
-
-🔗 API en producción: https://apihorariomed.onrender.com
-
-📂 Repositorio API: https://github.com/NilverTI/ApiHorarioMed
-
-📂 Repositorio App Android: https://github.com/NilverTI/App_Medicamentos
-
-------------------------------------------------------------------------
-
-## 📦 Endpoints principales
-
-  Método   Endpoint
-  -------- -----------------
-  GET      /schedules
-  GET      /schedules/{id}
-  POST     /schedules
-  PUT      /schedules/{id}
-  DELETE   /schedules/{id}
-
-------------------------------------------------------------------------
-
-## 🎯 Funcionales requeridos
-
-✔ Navegación entre pantallas\
+✔ Navegación\
 ✔ Lista con estado activo/inactivo\
 ✔ Formulario crear/editar\
-✔ Detalle completo\
-✔ Mensajes de éxito/error\
-✔ Arquitectura por capas
-
-------------------------------------------------------------------------
-
-## 🎨 Diseño
-
-Diseño minimalista, moderno y enfocado en usabilidad. Colores
-principales: tonos violeta y morado con Material 3.
+✔ Pantalla de detalle\
+✔ CRUD completo\
+✔ Mensajes de éxito y error\
+✔ Arquitectura por capas\
+✔ API REST separada
 
 ------------------------------------------------------------------------
 
 ## 👨‍💻 Autor
 
-Nilver Tantalean Inga\
-Proyecto académico -- Desarrollo de Aplicaciones
-
-------------------------------------------------------------------------
-
-## 📌 Estado del proyecto
-
-✔ API desplegada\
-✔ CRUD funcionando\
-✔ Integración completa App ↔ API\
-✔ Arquitectura limpia implementada
-
-------------------------------------------------------------------------
-
-# 💡 Proyecto MiHorarioMed
-
-Aplicación completa Android + API REST con arquitectura profesional.
+**Nilver T.I.**\
+Proyecto académico -- Desarrollo de Apps Android
